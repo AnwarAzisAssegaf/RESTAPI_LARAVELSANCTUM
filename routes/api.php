@@ -31,12 +31,12 @@ Route::namespace('V1')->prefix('v1')->group(function () {
         return $request->user();
     });
 	
-	Route::namespace('Profile')->group(function () {
+	Route::namespace('Income')->group(function () {
 	Route::group(['middleware' => 'auth:sanctum'], function(){
-    Route::post('/create', 'ProfileController@create');
-    Route::get('/edit/{id}', 'ProfileController@edit');
-    Route::post('/edit/{id}', 'ProfileController@update');
-    Route::get('/delete/{id}', 'ProfileController@delete');
+    Route::post('/create', [App\Http\Controllers\V1\Income\IncomeController::class,'create']);
+    Route::get('/edit/{id}', [App\Http\Controllers\V1\Income\IncomeController::class,'edit']);
+    Route::post('/edit/{id}', [App\Http\Controllers\V1\Income\IncomeController::class,'update']);
+    Route::get('/delete/{id}', [App\Http\Controllers\V1\Income\IncomeController::class,'delete']);
 	});
 	});
 	
