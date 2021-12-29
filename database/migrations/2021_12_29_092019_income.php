@@ -13,7 +13,18 @@ class Income extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('income', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('transaksi');
+            $table->double('jumlah');
+            $table->longText('file_bukti');
+            $table->date('tanggal');
+            $table->string('bulanx');
+            $table->string('tahunx');
+            $table->date('tanggal_buat');
+            $table->date('user_id');
+            $table->string('stts_lock');
+        });
     }
 
     /**
@@ -23,6 +34,6 @@ class Income extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('income');
     }
 }
